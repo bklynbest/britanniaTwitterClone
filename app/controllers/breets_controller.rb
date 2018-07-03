@@ -1,5 +1,6 @@
 class BreetsController < ApplicationController
   before_action :set_breet, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:show, :index]
 
   # GET /breets
   # GET /breets.json
