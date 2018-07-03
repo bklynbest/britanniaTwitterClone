@@ -5,6 +5,7 @@ class BreetsController < ApplicationController
   # GET /breets.json
   def index
     @breets = Breet.all.order("created_at DESC")
+    @breet= Breet.new
   end
 
   # GET /breets/1
@@ -28,7 +29,7 @@ class BreetsController < ApplicationController
 
     respond_to do |format|
       if @breet.save
-        format.html { redirect_to @breet, notice: 'Breet was successfully created.' }
+        format.html { redirect_to root_path, notice: 'Breet was successfully created.' }
         format.json { render :show, status: :created, location: @breet }
       else
         format.html { render :new }
