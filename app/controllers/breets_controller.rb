@@ -16,7 +16,8 @@ class BreetsController < ApplicationController
 
   # GET /breets/new
   def new
-    @breet = Breet.new
+    @breet = current_user.breets.build
+    
   end
 
   # GET /breets/1/edit
@@ -26,7 +27,7 @@ class BreetsController < ApplicationController
   # POST /breets
   # POST /breets.json
   def create
-    @breet = Breet.new(breet_params)
+    @breet = current_user.breets.build(breet_params)
 
     respond_to do |format|
       if @breet.save

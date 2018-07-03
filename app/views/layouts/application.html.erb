@@ -22,7 +22,7 @@
       <%= link_to root_path, class: 'navbar-item' do %>
       <h1 class='title is-5'>Britter</h1>
   <% end %>
-      <div class= 'navbar-burger burger' data-target='navbarExample'>
+      <div class="navbar-burger">
         <span></span>
         <span></span>
         <span></span>
@@ -33,9 +33,17 @@
           <div class='navbar-item'>
             <div class='field is-grouped'>
               <p class='control'>
+                <% if user_signed_in? %>
                 <%= link_to 'New Breet', new_breet_path, class: 'button is-info is-inverted' %>
+                <%= link_to current_user.name, edit_user_registration_path, class: 'button is-info' %>
+                <%= link_to 'Sign Out', logout_path, data: {confirm: 'Are you sure'}, class: 'button is-danger is-inverted' %>
               </p>
-              <p><%= link_to 'Sign Up', new_user_registration_path, class:'control button is-info is-inverted'%></p>
+                <% else %>
+              <p class="control"><%= link_to 'Sign Up', new_user_registration_path, class:'button is-info is-inverted'%></p>
+              <p class= "control">
+                <%= link_to 'Sign In', login_path, class:'control button is-info is-inverted'%>
+              </p>
+              <% end %>
             </div>
           </div>
         </div>
