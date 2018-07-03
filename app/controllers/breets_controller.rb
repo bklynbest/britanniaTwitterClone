@@ -4,7 +4,7 @@ class BreetsController < ApplicationController
   # GET /breets
   # GET /breets.json
   def index
-    @breets = Breet.all
+    @breets = Breet.all.order("created_at DESC")
   end
 
   # GET /breets/1

@@ -1,0 +1,50 @@
+<div class= 'column is-half'>
+  <article class= 'media box'>
+    <figure class='media-left'>
+      <p class='image is-64x64'>
+        <img src='https://bulma.io/images/placeholders/64x64.png'>
+      </p>
+      
+    </figure>
+    <div class="media-content">
+      
+    </div>
+  </article>
+    
+</div>
+
+<% @breets.each do | breet | %>
+  <div class="box">
+    <article class="media">
+  	  <div class="media-left">
+  			<figure class="image is-64x64">
+  				<img src='https://bulma.io/images/placeholders/64x64.png'>
+  			</figure>
+  		</div>
+  		<div class= 'media-content'>
+  		  <div class= "content">
+  		    <strong>Jonathan Momperousse</strong><br />
+  		    <small>@Britania Dev</small><br />
+  		    <p><%= breet.breet %></p>
+  		  </div>
+  		  <nav class="level">
+  		    <div class= "level-left is-mobile">
+  		      <%= link_to breet, class: "level-item" do %>
+  		        <span class= "icon"><i class="fa fa-link" aria-hidden="true"></i></span>
+  		      <% end %>
+  		      <%= link_to edit_breet_path(breet), class:'level-item' do %>
+  		        <span class="icon"><i class="fa fa-pencil" aria-hidden="true"></i></span>
+  		      <% end %>
+  		      <%= link_to breet, method: :delete, data: {confirm: 'Are you sure you want to delete this Breet?'} do %>
+  		        <span class="icon"><i class="fa fa-trash-o" aria-hidden="true"></i></span>
+  		      <% end %>
+  		    </div>
+  		  </nav>
+  		</div>
+  	</article>
+  </div>
+
+
+<% end %>
+
+
