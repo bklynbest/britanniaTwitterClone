@@ -3,6 +3,7 @@
 <head>
   <title>Britter</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
@@ -17,12 +18,25 @@
        <p class="alert"><%= alert %></p>
     </div>
   <% end %>
+  
   <nav class= 'navbar is-info'>
     <div class= 'navbar-brand'>
       <%= link_to root_path, class: 'navbar-item' do %>
       <h1 class='title is-5'>Britter</h1>
   <% end %>
       <div class="navbar-burger">
+             <p class='control'>
+                <% if user_signed_in? %>
+                <%= link_to 'New Breet', new_breet_path, class: 'button is-info is-inverted' %>
+                <%= link_to current_user.name, edit_user_registration_path, class: 'button is-info' %>
+                <%= link_to 'Sign Out', logout_path, data: {confirm: 'Are you sure'}, class: 'button is-danger is-inverted' %>
+              </p>
+                <% else %>
+              <p class="control"><%= link_to 'Sign Up', new_user_registration_path, class:'button is-info is-inverted'%></p>
+              <p class= "control">
+                <%= link_to 'Sign In', login_path, class:'control button is-info is-inverted'%>
+              </p>
+              <% end %>
         <span></span>
         <span></span>
         <span></span>
